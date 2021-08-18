@@ -4,6 +4,11 @@
 #include <string>
 
 using namespace std;
+
+//Funções
+void GerenciaDados ();
+
+//Classes
 class Grafo
 {
     private:
