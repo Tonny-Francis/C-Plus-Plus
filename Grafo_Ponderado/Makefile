@@ -1,9 +1,7 @@
 all:
-	g++ -c Grafo.cpp
-	g++ Grafo.o main.cpp -o main
+	g++ -c ./cpp/Grafo.cpp -I ./Headers  -o ./bin/Grafo.o
 
 clean:
-	rm ./bin/*
-
+	- del ./bin *.o
 run:
-	main.exe
+	./exe/main.exe
