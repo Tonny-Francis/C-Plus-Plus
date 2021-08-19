@@ -52,4 +52,5 @@ void GerenciaDados()
         tam = tam + 1;
         _Arestas.push_back(stof(_Auxiliar[i].substr(tam, _Auxiliar[i].size())));
     }
+    cout << "teste";
 }

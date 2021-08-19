@@ -3,6 +3,6 @@
 
 int main ()
 {
-    
+    GerenciaDados();
     return 0;
 }
