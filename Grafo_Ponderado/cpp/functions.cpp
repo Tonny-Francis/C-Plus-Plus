@@ -1,12 +1,5 @@
 #include "functions.h"
 
-//Variaveis
-//Vector que vai receber os primeiros vertices
-vector <string> _Vertice_1;
-//Vector que vai receber os segundos vertices
-vector <string> _Vertice_2;
-//Vector que vai receber as arestas
-vector <float> _Arestas;
 //Limpa Tela
 void Limpa_Tela()
 {
@@ -34,102 +27,53 @@ void Delay(int i)
     #endif
 }
 //Gerencia os dados do arquivo.txt
-void GerenciaDados()
-{
-    //Variavel que recebe os tamanhos das linhas
-    int tam = 0;
-    //Vector que vai receber os dados do arquivo.txt
-    vector <string> _Linhas;
-    //Vector auxiliar
-    vector<string> _Auxiliar;
-    //Variavel auxiliar
-    string Auxiliar;
-    //Inicializando um arquivo do tipo ifstream
-    ifstream Dados;
-    //Fazendo a abertura do arquivo
-    Dados.open("Arestas_Vertices_Pesos.txt");
-    //Verifica se o arquivo foi aberto
-    if(Dados.is_open())
-    {
-        //Passa linha por linha para o vector linha
-        while(getline(Dados, Auxiliar))
-        {
-            _Linhas.push_back(Auxiliar);
-        }
-        //Feacha o arquivo.txt
-        Dados.close();
-    }
-    else
-    {
-        //Mostra uma mensagem de erro caso tenha algum problema com arquivo.txt
-        cout << "Não foi possivel abrir o arquivo.txt" << endl;
-    }
 
-    //Laço responsavel por extrair cada dado de uma linha
-    for (int i = 0; i < _Linhas.size(); i++)
-    {
-        //Passa o primeiro vetice para o vector vertice
-        tam = _Linhas[i].find(" ");
-        _Vertice_1.push_back( _Linhas[i].substr(0, tam));
-        
-        //Passando o segundo vertice para o vector vertice
-        tam = tam +1;
-        _Auxiliar.push_back(_Linhas[i].substr(tam, _Linhas[i].size()));
-        tam = _Auxiliar[i].find(" ");
-        _Vertice_2.push_back( _Auxiliar[i].substr(0, tam));
-        
-        //Passando a aresta  para o vector Arestas e convertendo para float
-        tam = tam + 1;
-        _Arestas.push_back(stof(_Auxiliar[i].substr(tam, _Auxiliar[i].size())));
-    }
-}
-
-//Passa o primeiro vertice
-vector <string> GetVertice_1()
-{
-    return _Vertice_1;
-}
-
-//Passa o segundo vertice
-vector <string> GetVertice_2()
-{
-    return _Vertice_2;
-}
-
-//Passando arestas
-vector <float> GetAresta()
-{
-    return _Arestas;
-}
-
-//Menu de opções
-void Menu()
+//Funções do menu
+int Opcoes()
 {
     int Menu = 0;
+    Limpa_Tela();
+    cout << setw(50) << setfill('-') << "\n";
+    cout << "1- Numero de Vertices e Enlaces" << endl;
+    cout << "2- Lista de Vertices" << endl;
+    cout << "3- Algoritmo de Diijkstra" << endl;
+    cout << "4- Diametro do Grafo" << endl;
+    cout << "5- Vertice com maior centralidade de grau" << endl;
+    cout << "6- Vertice com maior centralidade de intermediação" << endl;
+    cout << endl << "   Opcao: ";
+    cin >> Menu;
+    cout << setw(50) << setfill('-') << "\n";
+    return Menu;
+}
+void case_1()
+{
 
-    switch(Menu)
-    {
-    case 1:
-        
-        break;
-    case 2:
-        
-        break;
-    case 3:
-        
-        break;
-    case 4:
-        
-        break;
-    case 5:
-        
-        break;
-    case 6:
-        
-        break;
+}
+void case_2()
+{
+
+}
+void case_3()
+{
+
+}
+void case_4()
+{
     
-    default:
-        cout << "Opção Invalida!!, Tente Novamente";
-        break;
-    }
+}
+void case_5()
+{
+
+}
+void case_6()
+{
+
+}
+void default_1()
+{
+    cout << setw(50) << setfill('-') << endl;
+    cout << "Opção Invalida!!, Tente Novamente";
+    cout << setw(50) << setfill('-') << endl;
+    Delay(5);
+    Limpa_Tela();
 }

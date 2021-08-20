@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <iomanip>
 
 #ifdef linux
     #include <unistd.h>
@@ -21,17 +22,12 @@ void Limpa_Tela();
 //Delay
 void Delay(int i);
 
-//Gerencia os dados do arquivo.txt
-void GerenciaDados();
-
-//Passa o primeiro vertice
-vector <string> GetVertice_1();
-
-//Passa o segundo vertice
-vector <string> GetVertice_2();
-
-//Passa Arestas
-vector <float> GetAresta();
-
-//Menu de opções
-void Menu();
+//Funções do Menu
+int Opcoes();
+void case_1();
+void case_2();
+void case_3();
+void case_4();
+void case_5();
+void case_6();
+void default_1();

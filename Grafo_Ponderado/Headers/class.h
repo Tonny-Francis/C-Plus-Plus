@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -16,6 +17,10 @@ class Grafo
     public:
     //Define o peso nas arestas
     void setGrafo();
+    //Gerencia os dados do arquivo.txt
+    void GerenciaDados();
+    //Lista de Vertices
+    void ListaVertices();
     //Metodo de Inserção de arestas
     void InsercaoArestas(int _vertices, float _aresta);
 };
