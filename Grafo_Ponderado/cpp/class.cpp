@@ -2,13 +2,13 @@
 #include "functions.h"
 
 //Definições da Classe Grafo
-void Grafo::setGrafo ()
+void Grafo::setGrafo()
 {
-    _Vertice_1 = GetVertice_1 ();
-    _Vertice_2 = GetVertice_2 ();
+    _Vertice_1 = GetVertice_1();
+    _Vertice_2 = GetVertice_2();
     _Arestas = GetAresta();
 }
-void Grafo::InsercaoArestas (int _posicao, float _aresta)
+void Grafo::InsercaoArestas(int _posicao, float _aresta)
 {
     _Arestas[_posicao] = _aresta;
 }

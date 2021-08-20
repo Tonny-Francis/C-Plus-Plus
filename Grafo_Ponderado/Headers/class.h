@@ -15,9 +15,9 @@ class Grafo
 
     public:
     //Define o peso nas arestas
-    void setGrafo ();
+    void setGrafo();
     //Metodo de Inserção de arestas
-    void InsercaoArestas (int _vertices, float _aresta);
+    void InsercaoArestas(int _vertices, float _aresta);
 };
 
 class Vertice
@@ -28,7 +28,7 @@ class Vertice
     
     public:
     //Armazena os vertices lidos do arquivo.txt no vector
-    void setVertices (string _vertice_1, string _vertice_2);
+    void setVertices(string _vertice_1, string _vertice_2);
 };
 
 class Aresta 

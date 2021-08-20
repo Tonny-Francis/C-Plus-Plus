@@ -1,6 +1,4 @@
 #include "functions.h"
-#include "class.h"
-#include <time.h>
 
 //Variaveis
 //Vector que vai receber os primeiros vertices
@@ -9,7 +7,32 @@ vector <string> _Vertice_1;
 vector <string> _Vertice_2;
 //Vector que vai receber as arestas
 vector <float> _Arestas;
-
+//Limpa Tela
+void Limpa_Tela()
+{
+    #ifdef linux
+    system("clear");
+    #elif LINUX
+    system("clear");
+    #elif UNIX
+    system("clear");
+    #else
+    system("cls");
+    #endif
+}
+//Delay
+void Delay(int i)
+{
+    #ifdef linux
+    sleep(i);
+    #elif LINUX
+    sleep(i);
+    #elif UNIX
+    sleep(i);
+    #else
+    Sleep(i);
+    #endif
+}
 //Gerencia os dados do arquivo.txt
 void GerenciaDados()
 {
@@ -62,41 +85,29 @@ void GerenciaDados()
 }
 
 //Passa o primeiro vertice
-vector <string> GetVertice_1 ()
+vector <string> GetVertice_1()
 {
     return _Vertice_1;
 }
 
 //Passa o segundo vertice
-vector <string> GetVertice_2 ()
+vector <string> GetVertice_2()
 {
     return _Vertice_2;
 }
 
 //Passando arestas
-vector <float> GetAresta ()
+vector <float> GetAresta()
 {
     return _Arestas;
 }
 
-//Delay
-void Delay (int i)
-{
-    //Passa de segundos para milisegundos
-    int M = 1000 * i;
-
-    //Armazena a hora de inicio
-    clock_t Tempo_de_Inicio = clock();
-    //loop até que o tempo necessario seje alcançado
-    while (clock() < Tempo_de_Inicio + M);
-}
-
 //Menu de opções
-void Menu ()
+void Menu()
 {
     int Menu = 0;
 
-    switch (Menu)
+    switch(Menu)
     {
     case 1:
         
@@ -119,7 +130,6 @@ void Menu ()
     
     default:
         cout << "Opção Invalida!!, Tente Novamente";
-        Delay(3);
         break;
     }
 }

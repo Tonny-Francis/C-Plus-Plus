@@ -1,14 +1,13 @@
-#include <iostream>
 #include "class.h"
 #include "functions.h"
-#include <unistd.h>
 
-int main ()
+int main()
 {
     //GerenciaDados();
     //Menu();
-    cout << "Teste" << endl;
-    
-    cout << "Sucesso" << endl;
+    cout << "Teste Limpa Tela" << endl;
+    Delay(5);
+    Limpa_Tela();
+    cout << "Ok" << endl;
     return 0;
 }
