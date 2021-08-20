@@ -5,28 +5,26 @@
 
 using namespace std;
 
-//Funções
-void GerenciaDados ();
-
 //Classes
 class Grafo
 {
     private:
-    string vertice_1;
-    string vertice_2;
-    float peso;
+    vector <string> _Vertice_1;
+    vector <string> _Vertice_2;
+    vector <float> _Arestas;
 
     public:
     //Define o peso nas arestas
-    void setVertices (string _vertice_1, string _vertice_2, string _peso);
-
+    void setGrafo ();
+    //Metodo de Inserção de arestas
+    void InsercaoArestas (int _vertices, float _aresta);
 };
 
 class Vertice
 {
     private:
-    vector <string> vertice_1;
-    vector <string> vertice_2;
+    vector <string> _Vertice_1;
+    vector <string> _Vertice_2;
     
     public:
     //Armazena os vertices lidos do arquivo.txt no vector
@@ -36,11 +34,11 @@ class Vertice
 class Aresta 
 {
     private:
-    string origem;
-    string destino;
+    string Origem;
+    string Destino;
 
     public:
     //Construtor que define o ponto de origem e destino 
-    Aresta(string _origem, string _destino );
+    Aresta(string _origem, string _destino);
 
 };

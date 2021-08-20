@@ -1,8 +1,14 @@
 #include <iostream>
-#include "Grafo.h"
+#include "class.h"
+#include "functions.h"
+#include <unistd.h>
 
 int main ()
 {
-    GerenciaDados();
+    //GerenciaDados();
+    //Menu();
+    cout << "Teste" << endl;
+    
+    cout << "Sucesso" << endl;
     return 0;
 }
