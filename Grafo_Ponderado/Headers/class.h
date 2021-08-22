@@ -17,15 +17,19 @@ class Grafo
     
     public:
     //Gerencia os dados do arquivo.txt
-    friend void GerenciaDados(Grafo &pos);
+    void GerenciaDados();
     //Numero de vertices e enlaces
-    friend int Numero_vertices_enlaces(Grafo &pos);
+    int Numero_vertices_enlaces();
     //Lista de vertices
-    friend int ListaVertices(Grafo &pos);
+    int ListaVertices();
     //Algoritmo de Dijkstra
-    friend int Algoritmo_Diijkstra(Grafo &pos);
+    int Algoritmo_Diijkstra();
     //Metodo de inserção de arestas
     void InsercaoArestas(int _vertices, float _aresta);
+    //Função menu e amiga da class Grafo
+    friend int Menu(Grafo _Grafo);
+    //Funçao voltar e amiga da class Grafo
+    friend int Voltar(Grafo _Grafo);
 };
 
 class Vertice
@@ -48,5 +52,8 @@ class Aresta
     public:
     //Construtor que define o ponto de origem e destino 
     Aresta(string _origem, string _destino);
-
+    //Função menu e amiga da class Aresta
+    friend int Menu(Grafo _Grafo, Aresta _Aresta);
+    //Funçao voltar e amiga da class Grafo
+    friend int Voltar(Grafo _Grafo, Aresta _Aresta);
 };

@@ -1,6 +1,6 @@
 #include "class.h"
 //Gerencia os dados do arquivo.txt
-void GerenciaDados(Grafo &pos)
+void Grafo::GerenciaDados()
 {
     //Variavel que recebe os tamanhos das linhas
     int tam = 0;
@@ -35,50 +35,48 @@ void GerenciaDados(Grafo &pos)
     {
         //Passa o primeiro vetice para o vector vertice
         tam = _Linhas[i].find(" ");
-        pos._Vertice_1.push_back( _Linhas[i].substr(0, tam));
+        _Vertice_1.push_back( _Linhas[i].substr(0, tam));
         //Passando o segundo vertice para o vector vertice
         tam = tam +1;
         _Auxiliar_0.push_back(_Linhas[i].substr(tam, _Linhas[i].size()));
         tam = _Auxiliar_0[i].find(" ");
-        pos._Vertice_2.push_back( _Auxiliar_0[i].substr(0, tam));
+        _Vertice_2.push_back( _Auxiliar_0[i].substr(0, tam));
         //Passando a aresta  para o vector Arestas e convertendo para float
         tam = tam + 1;
-        pos._Arestas.push_back(stof(_Auxiliar_0[i].substr(tam, _Auxiliar_0[i].size())));
+        _Arestas.push_back(stof(_Auxiliar_0[i].substr(tam, _Auxiliar_0[i].size())));
     }
 }
 //Número de vertices e enlaces
-int Numero_vertices_enlaces(Grafo &pos)
+int Grafo::Numero_vertices_enlaces()
 {
     //Variavel auxiliar
     int N = 0;
     //Percorre todo o vector procurando por NA
-    for(int z = 0; z < pos._Vertice_1.size(); z++)
+    for(int z = 0; z < _Vertice_1.size(); z++)
     {
-        if(pos._Vertice_1[z] == "NA")
+        if(_Vertice_1[z] == "NA")
             N++;
-        if(pos._Vertice_2[z] == "NA")
+        if(_Vertice_2[z] == "NA")
             N++;
     }
-    cout << "O Grafo possui " << pos._Vertice_1.size() << " vertices e " << pos._Vertice_1.size() - N << " enlaces" << endl;
-    Voltar();
+    cout << "O Grafo possui " << _Vertice_1.size() << " vertices e " << _Vertice_1.size() - N << " enlaces" << endl;
     return 0;
 }
 //Lista de Vertices
-int ListaVertices(Grafo &pos)
+int Grafo::ListaVertices()
 {   
     cout << setw(50) << setfill('-') << "\n";
     
-    for(int k = 0; k < pos._Vertice_1.size(); k++)
+    for(int k = 0; k < _Vertice_1.size(); k++)
     {
-        cout << k+1<< "° "<< pos._Vertice_1[k] << " " << "-->" << " " << pos._Vertice_2[k] << endl;
+        cout << k+1<< "° "<< _Vertice_1[k] << " " << "-->" << " " << _Vertice_2[k] << endl;
     }
 
     cout << setw(50) << setfill('-') << "\n";
-    Voltar();
     return 0;
 }
 //Algoritmo de Dijkstra
-int Algoritmo_Diijkstra(Grafo &pos)
+int Grafo::Algoritmo_Diijkstra()
 {
     
 

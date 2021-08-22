@@ -1,6 +1,6 @@
 #include "functions.h"
 #include "class.h"
-
+int _Menu;
 //Limpa Tela
 void Limpa_Tela()
 {
@@ -28,10 +28,10 @@ void Delay(int i)
     #endif
 }
 //Menu de opcoes
-int Menu()
+int Menu(Grafo _Grafo, Aresta _Aresta)
 {
     //Variavel que recebera a opção desejada
-    int _Menu = 0;
+    _Menu = 0;
     //Menu de opcoes
     Limpa_Tela();
     cout << setw(50) << setfill('-') << "\n";
@@ -44,20 +44,59 @@ int Menu()
     cout << endl << "   Opcao: ";
     cin >> _Menu;
     cout << setw(50) << setfill('-') << "\n";
-    return _Menu;
+
+    switch(_Menu)
+    {
+        case 1:
+            Limpa_Tela();
+            _Grafo.Numero_vertices_enlaces();
+            Voltar(_Grafo, _Aresta);
+
+            break;
+        case 2:
+            Limpa_Tela();
+            _Grafo.ListaVertices();
+            Voltar(_Grafo, _Aresta);
+
+            break;
+        case 3:
+        
+            break;
+        case 4:
+
+            break;
+        case 5:
+
+            break;
+        case 6:
+        
+            break;
+    
+        default:
+            Limpa_Tela();
+            cout << setw(50) << setfill('-') << "\n";
+            cout << "Opção Invalida!!, Tente Novamente" << endl;
+            cout << setw(50) << setfill('-') << "\n";
+            Delay(3);
+            Limpa_Tela();
+            return Menu(_Grafo, _Aresta);
+            break;
+    }
+
+    return 0;
 }
 //Retorna ao menu
-int Voltar()
+int Voltar(Grafo _Grafo, Aresta _Aresta)
 {
     string voltar;
     char n;
     cout << "Digite voltar para retornar ao menu" << endl;
     cin >> voltar;
     if(voltar == "voltar")
-        return Menu();
+        return Menu(_Grafo, _Aresta);
     else
         Limpa_Tela();
-        return Voltar();
+        return Voltar(_Grafo, _Aresta);
 
     return 0;
 }
