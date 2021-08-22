@@ -1,4 +1,5 @@
 #include "functions.h"
+#include "class.h"
 
 //Limpa Tela
 void Limpa_Tela()
@@ -26,12 +27,12 @@ void Delay(int i)
     Sleep(i);
     #endif
 }
-//Gerencia os dados do arquivo.txt
-
-//Funções do menu
-int Opcoes()
+//Menu de opcoes
+int Menu()
 {
-    int Menu = 0;
+    //Variavel que recebera a opção desejada
+    int _Menu = 0;
+    //Menu de opcoes
     Limpa_Tela();
     cout << setw(50) << setfill('-') << "\n";
     cout << "1- Numero de Vertices e Enlaces" << endl;
@@ -41,39 +42,22 @@ int Opcoes()
     cout << "5- Vertice com maior centralidade de grau" << endl;
     cout << "6- Vertice com maior centralidade de intermediação" << endl;
     cout << endl << "   Opcao: ";
-    cin >> Menu;
+    cin >> _Menu;
     cout << setw(50) << setfill('-') << "\n";
-    return Menu;
+    return _Menu;
 }
-void case_1()
+//Retorna ao menu
+int Voltar()
 {
+    string voltar;
+    char n;
+    cout << "Digite voltar para retornar ao menu" << endl;
+    cin >> voltar;
+    if(voltar == "voltar")
+        return Menu();
+    else
+        Limpa_Tela();
+        return Voltar();
 
-}
-void case_2()
-{
-
-}
-void case_3()
-{
-
-}
-void case_4()
-{
-    
-}
-void case_5()
-{
-
-}
-void case_6()
-{
-
-}
-void default_1()
-{
-    cout << setw(50) << setfill('-') << endl;
-    cout << "Opção Invalida!!, Tente Novamente";
-    cout << setw(50) << setfill('-') << endl;
-    Delay(5);
-    Limpa_Tela();
+    return 0;
 }

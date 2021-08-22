@@ -22,12 +22,10 @@ void Limpa_Tela();
 //Delay
 void Delay(int i);
 
-//Funções do Menu
-int Opcoes();
-void case_1();
-void case_2();
-void case_3();
-void case_4();
-void case_5();
-void case_6();
-void default_1();
+//Funções do menu
+//Função de opcoes
+int Menu();
+//Retorna ao menu
+int Voltar();
+//Algoritmo de Diikstra
+//Pede a ori

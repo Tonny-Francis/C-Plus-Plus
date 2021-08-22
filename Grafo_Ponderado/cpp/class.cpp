@@ -1,21 +1,6 @@
 #include "class.h"
-
-//Variaveis
-//Vector que vai receber os primeiros vertices
-vector <string> _Auxiliar_1;
-//Vector que vai receber os segundos vertices
-vector <string> _Auxiliar_2;
-//Vector que vai receber as arestas
-vector <float> _Auxiliar_3;
-
-//Definições da Classe Grafo
-void Grafo::setGrafo()
-{
-    _Vertice_1 = _Auxiliar_1;
-    _Vertice_2 = _Auxiliar_2;
-    _Arestas = _Auxiliar_3;
-}
-void Grafo::GerenciaDados()
+//Gerencia os dados do arquivo.txt
+void GerenciaDados(Grafo &pos)
 {
     //Variavel que recebe os tamanhos das linhas
     int tam = 0;
@@ -37,7 +22,7 @@ void Grafo::GerenciaDados()
         {
             _Linhas.push_back(Auxiliar);
         }
-        //Feacha o arquivo.txt
+        //Fecha o arquivo.txt
         Dados.close();
     }
     else
@@ -45,38 +30,59 @@ void Grafo::GerenciaDados()
         //Mostra uma mensagem de erro caso tenha algum problema com arquivo.txt
         cout << "Não foi possivel abrir o arquivo.txt" << endl;
     }
-
     //Laço responsavel por extrair cada dado de uma linha
     for (int i = 0; i < _Linhas.size(); i++)
     {
         //Passa o primeiro vetice para o vector vertice
         tam = _Linhas[i].find(" ");
-        _Auxiliar_1.push_back( _Linhas[i].substr(0, tam));
-        
+        pos._Vertice_1.push_back( _Linhas[i].substr(0, tam));
         //Passando o segundo vertice para o vector vertice
         tam = tam +1;
         _Auxiliar_0.push_back(_Linhas[i].substr(tam, _Linhas[i].size()));
         tam = _Auxiliar_0[i].find(" ");
-        _Auxiliar_2.push_back( _Auxiliar_0[i].substr(0, tam));
-        
+        pos._Vertice_2.push_back( _Auxiliar_0[i].substr(0, tam));
         //Passando a aresta  para o vector Arestas e convertendo para float
         tam = tam + 1;
-        _Auxiliar_3.push_back(stof(_Auxiliar_0[i].substr(tam, _Auxiliar_0[i].size())));
+        pos._Arestas.push_back(stof(_Auxiliar_0[i].substr(tam, _Auxiliar_0[i].size())));
     }
-
-    setGrafo();
+}
+//Número de vertices e enlaces
+int Numero_vertices_enlaces(Grafo &pos)
+{
+    //Variavel auxiliar
+    int N = 0;
+    //Percorre todo o vector procurando por NA
+    for(int z = 0; z < pos._Vertice_1.size(); z++)
+    {
+        if(pos._Vertice_1[z] == "NA")
+            N++;
+        if(pos._Vertice_2[z] == "NA")
+            N++;
+    }
+    cout << "O Grafo possui " << pos._Vertice_1.size() << " vertices e " << pos._Vertice_1.size() - N << " enlaces" << endl;
+    Voltar();
+    return 0;
 }
 //Lista de Vertices
-void Grafo::ListaVertices()
+int ListaVertices(Grafo &pos)
 {   
     cout << setw(50) << setfill('-') << "\n";
     
-    for(int k = 0; k < _Auxiliar_1.size(); k++)
+    for(int k = 0; k < pos._Vertice_1.size(); k++)
     {
-        cout << k+1<< "° "<< _Auxiliar_1[k] << " " << "-->" << " " << _Auxiliar_2[k] << endl;
+        cout << k+1<< "° "<< pos._Vertice_1[k] << " " << "-->" << " " << pos._Vertice_2[k] << endl;
     }
 
     cout << setw(50) << setfill('-') << "\n";
+    Voltar();
+    return 0;
+}
+//Algoritmo de Dijkstra
+int Algoritmo_Diijkstra(Grafo &pos)
+{
+    
+
+    return 0;
 }
 //Muda os valores das arestas
 void Grafo::InsercaoArestas(int _posicao, float _aresta)

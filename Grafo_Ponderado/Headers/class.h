@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <iomanip>
+#include "functions.h"
 
 using namespace std;
 
@@ -13,15 +14,17 @@ class Grafo
     vector <string> _Vertice_1;
     vector <string> _Vertice_2;
     vector <float> _Arestas;
-
+    
     public:
-    //Define o peso nas arestas
-    void setGrafo();
     //Gerencia os dados do arquivo.txt
-    void GerenciaDados();
-    //Lista de Vertices
-    void ListaVertices();
-    //Metodo de Inserção de arestas
+    friend void GerenciaDados(Grafo &pos);
+    //Numero de vertices e enlaces
+    friend int Numero_vertices_enlaces(Grafo &pos);
+    //Lista de vertices
+    friend int ListaVertices(Grafo &pos);
+    //Algoritmo de Dijkstra
+    friend int Algoritmo_Diijkstra(Grafo &pos);
+    //Metodo de inserção de arestas
     void InsercaoArestas(int _vertices, float _aresta);
 };
 
