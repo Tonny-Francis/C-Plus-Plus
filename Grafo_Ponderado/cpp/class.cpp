@@ -78,8 +78,49 @@ int Grafo::ListaVertices()
 //Algoritmo de Dijkstra
 int Grafo::Algoritmo_Diijkstra()
 {
-    
+    int Linha;
+    int Coluna;
+    string _Tabela[Linha][Coluna];
+    vector <string> _Nos;
+    vector <float> _Pesos;
+    vector <string> _Rotulo;
+    vector <string> _Valor;
+    vector <string> _Auxiliar;
+    bool loop;
 
+    //Juntando todos os vertices em um unico vector
+    for(int j = 0; j < _Vertice_1.size(); j++)
+    {
+        _Auxiliar.push_back(_Vertice_1[j]);
+        _Auxiliar.push_back(_Vertice_2[j]);
+    }
+
+    //Removendo os nomes repetidos
+    for(int l = 0; l < _Auxiliar.size(); l++)
+    {
+        loop = false;
+        for(int g = 0; g < l; g++)
+        {
+            if(_Auxiliar[l] == _Auxiliar[g])
+            {
+                loop = true;
+                break;
+            }
+        }
+        if(loop == false)
+        {
+            _Nos.push_back(_Auxiliar[l]);
+        }
+    }
+    //Determina a quantidade de colunas
+    Coluna = _Nos.size() + 3;
+
+    //Determina os vizinhos
+    for()
+    for(int q = 0; q < _Pesos.size(); q++)
+    {
+        cout << _Nos.size() << endl;
+    }
     return 0;
 }
 //Muda os valores das arestas

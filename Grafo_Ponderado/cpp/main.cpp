@@ -6,8 +6,9 @@ int main()
     Grafo Grafo_1;
     Aresta Aresta_1("b", "b");
     Grafo_1.GerenciaDados();
+    Grafo_1.Algoritmo_Diijkstra();
     //Recebe o retorno da função menu
-    Menu(Grafo_1, Aresta_1);
+    //Menu(Grafo_1, Aresta_1);
     
     return 0;
 }
