@@ -16,20 +16,30 @@ class Grafo
     vector <float> _Arestas;
     
     public:
+    //Obtem os valores do Vertice 1
+    string GetVertice_1(int n);
+    //Obtem os valores do vertice 2
+    string GetVertice_2(int n);
+    //Obtem os valor da aresta
+    float GetAresta(int n);
+    //Obtem o tamanho do vertice
+    int GetTam();
     //Gerencia os dados do arquivo.txt
     void GerenciaDados();
     //Numero de vertices e enlaces
     int Numero_vertices_enlaces();
     //Lista de vertices
     int ListaVertices();
-    //Algoritmo de Dijkstra
-    int Algoritmo_Diijkstra();
     //Metodo de inserção de arestas
     void InsercaoArestas(string Vertice_1,string Vertice_2, string Peso );
     //Função menu e amiga da class Grafo
     friend int Menu(Grafo _Grafo);
     //Funçao voltar e amiga da class Grafo
     friend int Voltar(Grafo _Grafo);
+    //Algoritmo de Dijkstra
+    friend int Algoritmo_Diijkstra(Grafo _Grafo);
+    //
+    friend vector <string> Vizinhos_Pesos(Grafo _Grafo, string Ponto);
 };
 
 class Vertice
@@ -56,4 +66,5 @@ class Aresta
     friend int Menu(Grafo _Grafo, Aresta _Aresta);
     //Funçao voltar e amiga da class Grafo
     friend int Voltar(Grafo _Grafo, Aresta _Aresta);
+    friend int Algoritmo_Diijkstra(Grafo _Grafo, Aresta _Aresta_1);
 };

@@ -1,4 +1,26 @@
 #include "class.h"
+string Grafo::GetVertice_1(int n)
+{
+    string Auxiliar;
+    Auxiliar = _Vertice_1[n];
+    return Auxiliar;
+}
+string Grafo::GetVertice_2(int n)
+{
+    string Auxiliar;
+    Auxiliar = _Vertice_2[n];
+    return Auxiliar;
+}
+float Grafo::GetAresta(int n)
+{
+    float Auxiliar;
+    Auxiliar = _Arestas[n];
+    return Auxiliar;
+}
+int Grafo::GetTam()
+{
+    return _Vertice_1.size();
+}
 //Gerencia os dados do arquivo.txt
 void Grafo::GerenciaDados()
 {
@@ -73,74 +95,6 @@ int Grafo::ListaVertices()
     }
 
     cout << setw(50) << setfill('-') << "\n";
-    return 0;
-}
-//Algoritmo de Dijkstra
-int Grafo::Algoritmo_Diijkstra()
-{
-    int Linha;
-    int Coluna;
-    string _Tabela[Linha][Coluna];
-    vector <string> _Nos;
-    vector <float> _Pesos;
-    vector <string> _Vizinhos;
-    vector <string> _Rotulo;
-    vector <string> _Valor;
-    vector <string> _Auxiliar;
-    #define Infinito 10000.0
-    bool loop;
-
-    //Juntando todos os vertices em um unico vector
-    for(int j = 0; j < _Vertice_1.size(); j++)
-    {
-        _Auxiliar.push_back(_Vertice_1[j]);
-        _Auxiliar.push_back(_Vertice_2[j]);
-    }
-
-    //Removendo os nomes repetidos
-    for(int l = 0; l < _Auxiliar.size(); l++)
-    {
-        loop = false;
-        for(int g = 0; g < l; g++)
-        {
-            if(_Auxiliar[l] == _Auxiliar[g])
-            {
-                loop = true;
-                break;
-            }
-        }
-        if(loop == false)
-        {
-            _Nos.push_back(_Auxiliar[l]);
-        }
-    }
-    //Determina a quantidade de colunas
-    Coluna = _Nos.size() + 3;
-
-    //Determina os vizinhos
-    for(int h = 0; h < _Vertice_1.size(); h++)
-    {
-        if(_Vertice_1[h] == "D")
-        {
-            _Vizinhos.push_back(_Vertice_2[h]);
-        }
-        if(_Vertice_2[h] == "D")
-        {
-            _Vizinhos.push_back(_Vertice_1[h]);
-        }
-    }
-    for(int q = 0; q < _Vizinhos.size(); q++)
-    {
-        //cout << _Nos[q] << endl;
-        cout << _Vizinhos[q] << endl;
-
-    }
-    cout << endl;
-    for(int q = 0; q < _Vertice_1.size(); q++)
-    {
-        //cout << _Vertice_1[q] << " --->" << _Vertice_2[q] << endl;
-    }
-
     return 0;
 }
 //Muda os valores das arestas

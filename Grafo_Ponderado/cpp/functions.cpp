@@ -97,6 +97,132 @@ int Voltar(Grafo _Grafo, Aresta _Aresta)
     else
         Limpa_Tela();
         return Voltar(_Grafo, _Aresta);
+    return 0;
+}
+//Função que descobre o vizinho mais de um ponto e o seu peso
+vector <string> Vizinhos_Pesos(Grafo _Grafo, string Ponto)
+{
+    vector <string> _Vizinhos;
 
+    //Determina os vizinhos de um vertice e os pesos
+    for(int h = 0; h < _Grafo._Vertice_1.size(); h++)
+    {
+        if(_Grafo._Vertice_1[h] == Ponto)
+        {
+            _Vizinhos.push_back(_Grafo._Vertice_2[h]);
+            _Vizinhos.push_back(to_string(_Grafo._Arestas[h]));
+        }
+        if(_Grafo._Vertice_2[h] == Ponto)
+        {
+            _Vizinhos.push_back(_Grafo._Vertice_1[h]);
+            _Vizinhos.push_back(to_string(_Grafo._Arestas[h]));
+        }
+    }
+    return _Vizinhos;
+}
+//Algoritmo de Dijkstra
+int Algoritmo_Diijkstra(Grafo _Grafo, Aresta _Aresta_1)
+{
+    int Linha;
+    int Coluna;
+    vector <string> _Nos;
+    vector <float> _Pesos;
+    vector <string> _Rotulo;
+    vector <string> _Valor;
+    vector <string> _Auxiliar;
+    #define Infinito "1000"
+    bool loop;
+
+    //Juntando todos os vertices em um unico vector
+    for(int j = 0; j < _Grafo.GetTam(); j++)
+    {
+        _Auxiliar.push_back(_Grafo.GetVertice_1(j));
+        _Auxiliar.push_back(_Grafo.GetVertice_2(j));
+    }
+    //Removendo os nomes repetidos
+    for(int l = 0; l < _Auxiliar.size(); l++)
+    {
+        loop = false;
+        for(int g = 0; g < l; g++)
+        {
+            if(_Auxiliar[l] == _Auxiliar[g])
+            {
+                loop = true;
+                break;
+            }
+        }
+        if(loop == false)
+        {
+            _Nos.push_back(_Auxiliar[l]);
+        }
+    }
+    //Determinando o tamanho da matriz
+    Coluna = _Nos.size() + 2;
+    Linha = _Nos.size() + 1;
+    string Tabela[Linha][Coluna];
+    //Preenchendo a tabela
+    for(int l = 0; l < Linha; l++)
+    {
+        for(int c = 0; c < Coluna; c++)
+        {
+            Tabela[l][c] = "-";
+        }
+    }
+    //Passando os valores da primeira linha
+    for(int u = 0; u < _Nos.size(); u++)
+    {
+        Tabela[0][u] = _Nos[u];
+    }
+    //Adicionando os rotulos e valores
+    Tabela[0][_Nos.size()] = "R";
+    Tabela[0][_Nos.size() +1] = "V";
+    vector <string> _Vizinhos_Pesos;
+    string Auxililar = _Aresta_1.Origem;
+    int t = 0;
+    int u = 0;
+    int f = 0;
+    int e = _Nos.size();
+    int p = _Nos.size();
+    int tam;
+    _Auxiliar.clear();
+    //Montando tabela
+    for(int g = 0; g < e; g++)
+    {
+        if(f != p)
+        {
+            if(Tabela[t][u] == Auxililar)
+            {
+                Tabela[g+1][u] = "0";
+                f++;
+            }
+            else
+            {
+                g--;
+                u++;
+            }
+        }
+        else
+        {
+            _Vizinhos_Pesos = Vizinhos_Pesos(_Grafo, Auxililar);
+            tam = _Vizinhos_Pesos.size();
+            tam = tam / 2;
+            for(int y = 0; y < tam; y++)
+            {
+                if(Tabela[][] == _Vizinhos_Pesos[tam -1])
+                {
+                    
+                }
+            }
+
+        }
+    }
+    for(int l = 0; l < Linha; l++)
+    {
+        for(int c = 0; c < Coluna; c++)
+        {
+            cout << Tabela[l][c] << " ";
+        }
+        cout << endl;
+    }
     return 0;
 }

@@ -4,9 +4,9 @@ int main()
 {
     //Instanciano Grafo_1
     Grafo Grafo_1;
-    Aresta Aresta_1("b", "b");
+    Aresta Aresta_1("B", "B");
     Grafo_1.GerenciaDados();
-    Grafo_1.Algoritmo_Diijkstra();
+    Algoritmo_Diijkstra(Grafo_1, Aresta_1);
     //Recebe o retorno da função menu
     //Menu(Grafo_1, Aresta_1);
     
