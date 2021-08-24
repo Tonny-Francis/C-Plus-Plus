@@ -25,7 +25,7 @@ class Grafo
     //Algoritmo de Dijkstra
     int Algoritmo_Diijkstra();
     //Metodo de inserção de arestas
-    void InsercaoArestas(int _vertices, float _aresta);
+    void InsercaoArestas(string Vertice_1,string Vertice_2, string Peso );
     //Função menu e amiga da class Grafo
     friend int Menu(Grafo _Grafo);
     //Funçao voltar e amiga da class Grafo

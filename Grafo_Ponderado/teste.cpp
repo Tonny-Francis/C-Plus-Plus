@@ -4,7 +4,6 @@ class gato
 {
     private:
     int pet = 0;
-    int j;
 
     public:
     friend int cat (gato pos);

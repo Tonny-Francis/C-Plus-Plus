@@ -83,9 +83,11 @@ int Grafo::Algoritmo_Diijkstra()
     string _Tabela[Linha][Coluna];
     vector <string> _Nos;
     vector <float> _Pesos;
+    vector <string> _Vizinhos;
     vector <string> _Rotulo;
     vector <string> _Valor;
     vector <string> _Auxiliar;
+    #define Infinito 10000.0
     bool loop;
 
     //Juntando todos os vertices em um unico vector
@@ -116,17 +118,35 @@ int Grafo::Algoritmo_Diijkstra()
     Coluna = _Nos.size() + 3;
 
     //Determina os vizinhos
-    for()
-    for(int q = 0; q < _Pesos.size(); q++)
+    for(int h = 0; h < _Vertice_1.size(); h++)
     {
-        cout << _Nos.size() << endl;
+        if(_Vertice_1[h] == "D")
+        {
+            _Vizinhos.push_back(_Vertice_2[h]);
+        }
+        if(_Vertice_2[h] == "D")
+        {
+            _Vizinhos.push_back(_Vertice_1[h]);
+        }
     }
+    for(int q = 0; q < _Vizinhos.size(); q++)
+    {
+        //cout << _Nos[q] << endl;
+        cout << _Vizinhos[q] << endl;
+
+    }
+    cout << endl;
+    for(int q = 0; q < _Vertice_1.size(); q++)
+    {
+        //cout << _Vertice_1[q] << " --->" << _Vertice_2[q] << endl;
+    }
+
     return 0;
 }
 //Muda os valores das arestas
-void Grafo::InsercaoArestas(int _posicao, float _aresta)
+void Grafo::InsercaoArestas(string Vertice_1, string Vertice_2, string Peso)
 {
-    _Arestas[_posicao] = _aresta;
+    
 }
 
 //Definições da Class Aresta
