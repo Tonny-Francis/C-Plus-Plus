@@ -123,14 +123,17 @@ vector <string> Vizinhos_Pesos(Grafo _Grafo, string Ponto)
 //Algoritmo de Dijkstra
 int Algoritmo_Diijkstra(Grafo _Grafo, Aresta _Aresta_1)
 {
-    int Linha;
-    int Coluna;
+    int tam = 0;
+    int n = 0;
+    int z = 0;
     vector <string> _Nos;
     vector <float> _Pesos;
     vector <string> _Rotulo;
     vector <string> _Valor;
     vector <string> _Auxiliar;
-    #define Infinito "1000"
+    vector <string> _Vizinhos;
+    string Origem;
+    #define Infinito 1000
     bool loop;
 
     //Juntando todos os vertices em um unico vector
@@ -156,86 +159,23 @@ int Algoritmo_Diijkstra(Grafo _Grafo, Aresta _Aresta_1)
             _Nos.push_back(_Auxiliar[l]);
         }
     }
-    //Determinando o tamanho da matriz
-    Coluna = _Nos.size() + 2;
-    Linha = _Nos.size() + 1;
-    string Tabela[Linha][Coluna];
-    //Preenchendo a tabela
-    for(int l = 0; l < Linha; l++)
-    {
-        for(int c = 0; c < Coluna; c++)
-        {
-            Tabela[l][c] = "-";
-        }
-    }
-    //Passando os valores da primeira linha
-    for(int u = 0; u < _Nos.size(); u++)
-    {
-        Tabela[0][u] = _Nos[u];
-    }
-    //Adicionando os rotulos e valores
-    Tabela[0][_Nos.size()] = "R";
-    Tabela[0][_Nos.size() +1] = "V";
-    vector <string> _Vizinhos_Pesos;
-    string Auxililar = _Aresta_1.Origem;
-    int t = 0;
-    int u = 0;
-    int f = 0;
-    int e = _Nos.size();
-    int p = _Nos.size();
-    int tam;
+    //
     _Auxiliar.clear();
-    //Montando tabela
-    for(int s = 1; s < Linha; s++)
+    Origem = _Aresta_1.Origem;
+    _Vizinhos = Vizinhos_Pesos(_Grafo, Origem);
+    for(int k = 0; k < _Nos.size(); k++)
+        _Valor.push_back("-");
+    for(int r = 0; r < _Nos.size(); r++)
     {
-    for(int g = 0; g < e; g++)
-    {
-        if(f != p)
+        if(_Vizinhos[tam] == _Nos[z])
         {
-            if(Tabela[t][u] == Auxililar)
-            {
-                Tabela[g+1][u] = "0";
-                f++;
-            }
-            else
-            {
-                g--;
-                u++;
-            }
-        }
-    }
-    Tabela[1][_Nos.size()] = Auxililar;
-    Tabela[1][_Nos.size()+1] = "0";
-    t = 0;
-    f = 0;
-    u = 0;
-
-    _Vizinhos_Pesos = Vizinhos_Pesos(_Grafo, Auxililar);
-    tam = _Vizinhos_Pesos.size();
-    for(int y = 0; y < tam; y++)
-    {
-        if(Tabela[t][u] == _Vizinhos_Pesos[y])
-        {
-            Tabela[f+1][u] = _Vizinhos_Pesos[y+1];
-        }
-        if(Tabela[t][u] == _Vizinhos_Pesos[y+2])
-        {
-            Tabela[f+1][u] = _Vizinhos_Pesos[y+3];
+            _Valor[z] = _Vizinhos[tam];
+            tam = tam +2;
+            z++;
         }
         else
-        {
-            u++;
-        }
-    }
-    for()
-    }
-    for(int l = 0; l < Linha; l++)
-    {
-        for(int c = 0; c < Coluna; c++)
-        {
-            cout << Tabela[l][c] << " ";
-        }
-        cout << endl;
+            z++;     
+        cout << _Valor[r] << endl; 
     }
     return 0;
 }
