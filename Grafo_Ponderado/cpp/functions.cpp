@@ -110,12 +110,12 @@ vector <string> Vizinhos_Pesos(Grafo _Grafo, string Ponto)
         if(_Grafo._Vertice_1[h] == Ponto)
         {
             _Vizinhos.push_back(_Grafo._Vertice_2[h]);
-            _Vizinhos.push_back(to_string(_Grafo._Arestas[h]));
+            _Vizinhos.push_back(_Grafo._Arestas[h]);
         }
         if(_Grafo._Vertice_2[h] == Ponto)
         {
             _Vizinhos.push_back(_Grafo._Vertice_1[h]);
-            _Vizinhos.push_back(to_string(_Grafo._Arestas[h]));
+            _Vizinhos.push_back(_Grafo._Arestas[h]);
         }
     }
     return _Vizinhos;
@@ -186,6 +186,8 @@ int Algoritmo_Diijkstra(Grafo _Grafo, Aresta _Aresta_1)
     int tam;
     _Auxiliar.clear();
     //Montando tabela
+    for(int s = 1; s < Linha; s++)
+    {
     for(int g = 0; g < e; g++)
     {
         if(f != p)
@@ -201,20 +203,31 @@ int Algoritmo_Diijkstra(Grafo _Grafo, Aresta _Aresta_1)
                 u++;
             }
         }
+    }
+    Tabela[1][_Nos.size()] = Auxililar;
+    Tabela[1][_Nos.size()+1] = "0";
+    t = 0;
+    f = 0;
+    u = 0;
+
+    _Vizinhos_Pesos = Vizinhos_Pesos(_Grafo, Auxililar);
+    tam = _Vizinhos_Pesos.size();
+    for(int y = 0; y < tam; y++)
+    {
+        if(Tabela[t][u] == _Vizinhos_Pesos[y])
+        {
+            Tabela[f+1][u] = _Vizinhos_Pesos[y+1];
+        }
+        if(Tabela[t][u] == _Vizinhos_Pesos[y+2])
+        {
+            Tabela[f+1][u] = _Vizinhos_Pesos[y+3];
+        }
         else
         {
-            _Vizinhos_Pesos = Vizinhos_Pesos(_Grafo, Auxililar);
-            tam = _Vizinhos_Pesos.size();
-            tam = tam / 2;
-            for(int y = 0; y < tam; y++)
-            {
-                if(Tabela[][] == _Vizinhos_Pesos[tam -1])
-                {
-                    
-                }
-            }
-
+            u++;
         }
+    }
+    for()
     }
     for(int l = 0; l < Linha; l++)
     {

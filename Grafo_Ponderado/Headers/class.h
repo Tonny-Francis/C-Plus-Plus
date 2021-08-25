@@ -13,7 +13,7 @@ class Grafo
     private:
     vector <string> _Vertice_1;
     vector <string> _Vertice_2;
-    vector <float> _Arestas;
+    vector <string> _Arestas;
     
     public:
     //Obtem os valores do Vertice 1
@@ -21,7 +21,7 @@ class Grafo
     //Obtem os valores do vertice 2
     string GetVertice_2(int n);
     //Obtem os valor da aresta
-    float GetAresta(int n);
+    string GetAresta(int n);
     //Obtem o tamanho do vertice
     int GetTam();
     //Gerencia os dados do arquivo.txt

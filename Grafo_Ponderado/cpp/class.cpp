@@ -11,9 +11,9 @@ string Grafo::GetVertice_2(int n)
     Auxiliar = _Vertice_2[n];
     return Auxiliar;
 }
-float Grafo::GetAresta(int n)
+string Grafo::GetAresta(int n)
 {
-    float Auxiliar;
+    string Auxiliar;
     Auxiliar = _Arestas[n];
     return Auxiliar;
 }
@@ -65,7 +65,7 @@ void Grafo::GerenciaDados()
         _Vertice_2.push_back( _Auxiliar_0[i].substr(0, tam));
         //Passando a aresta  para o vector Arestas e convertendo para float
         tam = tam + 1;
-        _Arestas.push_back(stof(_Auxiliar_0[i].substr(tam, _Auxiliar_0[i].size())));
+        _Arestas.push_back(_Auxiliar_0[i].substr(tam, _Auxiliar_0[i].size()));
     }
 }
 //Número de vertices e enlaces
