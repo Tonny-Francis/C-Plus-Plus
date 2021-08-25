@@ -37,6 +37,7 @@ class Grafo
     //Funçao voltar e amiga da class Grafo
     friend int Voltar(Grafo _Grafo);
     //Algoritmo de Dijkstra
+    friend vector <string> MenorValor(Grafo _Grafo, string Origem);
     friend int Algoritmo_Diijkstra(Grafo _Grafo);
     //
     friend vector <string> Vizinhos_Pesos(Grafo _Grafo, string Ponto);

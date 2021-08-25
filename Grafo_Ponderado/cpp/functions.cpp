@@ -120,22 +120,19 @@ vector <string> Vizinhos_Pesos(Grafo _Grafo, string Ponto)
     }
     return _Vizinhos;
 }
-//Algoritmo de Dijkstra
-int Algoritmo_Diijkstra(Grafo _Grafo, Aresta _Aresta_1)
+//Retorna o menor valor
+vector <string> MenorValor(Grafo _Grafo, string Origem)
 {
+    //Variaveis Auxiliares
     int tam = 0;
-    int n = 0;
     int z = 0;
     vector <string> _Nos;
     vector <float> _Pesos;
-    vector <string> _Rotulo;
     vector <string> _Valor;
     vector <string> _Auxiliar;
     vector <string> _Vizinhos;
-    string Origem;
-    #define Infinito 1000
+    string Auxiliar;
     bool loop;
-
     //Juntando todos os vertices em um unico vector
     for(int j = 0; j < _Grafo.GetTam(); j++)
     {
@@ -159,23 +156,65 @@ int Algoritmo_Diijkstra(Grafo _Grafo, Aresta _Aresta_1)
             _Nos.push_back(_Auxiliar[l]);
         }
     }
-    //
+    //Limpa o vetor para ser reutilizado
     _Auxiliar.clear();
-    Origem = _Aresta_1.Origem;
-    _Vizinhos = Vizinhos_Pesos(_Grafo, Origem);
+    //Passo o valor de um ponto para auxiliar
+    Auxiliar = Origem;
+    //Calcula os vizinhos de um ponto
+    _Vizinhos = Vizinhos_Pesos(_Grafo, Auxiliar);
+    //Preenche o vector antes de ser o usado com "-" que será considerado infinito
     for(int k = 0; k < _Nos.size(); k++)
         _Valor.push_back("-");
-    for(int r = 0; r < _Nos.size(); r++)
+    //Percorre todo vector de nos a procura de vizinhos de um certo ponto
+    for(int r = 0; r < _Nos.size() + 2; r++)
     {
         if(_Vizinhos[tam] == _Nos[z])
         {
             _Valor[z] = _Vizinhos[tam];
             tam = tam +2;
-            z++;
+            z = 0;
+            r = 0;
         }
         else
-            z++;     
-        cout << _Valor[r] << endl; 
+            z++;
+        if(_Nos[r] == Auxiliar)
+        {
+            _Valor[r] = "0";
+        }
+        if(_Valor.size() == _Vizinhos.size() / 2)
+        {
+            r = _Nos.size();
+        }
     }
+    z = 0;
+    tam = 1;
+    //Procura os pontos que não e vizinho de um certo ponto
+    //Problema de variavel
+    for(int s = 0; s < _Vizinhos.size() / 2; s++)
+    {
+        if(_Vizinhos[tam] != _Nos[z])
+        {
+            _Auxiliar.push_back(_Vizinhos[tam]);
+            _Auxiliar.push_back(_Vizinhos[tam -1]);
+            tam = tam + 2;
+        }
+        z++;
+    }
+    //Determina o menor valor entre os pontos não visitados
+    z = 0;
+    tam = 0;
+    tam = _Auxiliar.size() / 2;
+    for(int x = 0; x < _Valor.size(); x++)
+    {
+        cout << _Valor[x]<< endl;
+    }
+
+    return _Auxiliar;
+}
+//Algoritmo de Dijkstra
+int Algoritmo_Diijkstra(Grafo _Grafo, Aresta _Aresta_1)
+{
+    vector <string> teste;
+    teste = MenorValor(_Grafo, _Aresta_1.Origem);
     return 0;
 }
