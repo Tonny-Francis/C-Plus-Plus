@@ -126,10 +126,12 @@ vector <string> MenorValor(Grafo _Grafo, string Origem)
     //Variaveis Auxiliares
     int tam = 0;
     int z = 0;
+    int menor = 9999;
     vector <string> _Nos;
     vector <float> _Pesos;
     vector <string> _Valor;
     vector <string> _Auxiliar;
+    vector <int> _Auxiliar_1;
     vector <string> _Vizinhos;
     string Auxiliar;
     bool loop;
@@ -164,13 +166,16 @@ vector <string> MenorValor(Grafo _Grafo, string Origem)
     _Vizinhos = Vizinhos_Pesos(_Grafo, Auxiliar);
     //Preenche o vector antes de ser o usado com "-" que será considerado infinito
     for(int k = 0; k < _Nos.size(); k++)
-        _Valor.push_back("-");
+    {
+        _Valor.push_back("10000");
+        _Auxiliar_1.push_back(0);
+    }
     //Percorre todo vector de nos a procura de vizinhos de um certo ponto
     for(int r = 0; r < _Nos.size() + 2; r++)
     {
         if(_Vizinhos[tam] == _Nos[z])
         {
-            _Valor[z] = _Vizinhos[tam];
+            _Valor[z] = _Vizinhos[tam + 1];
             tam = tam +2;
             z = 0;
             r = 0;
@@ -186,7 +191,6 @@ vector <string> MenorValor(Grafo _Grafo, string Origem)
             r = _Nos.size();
         }
     }
-    z = 0;
     tam = 1;
     //Procura os pontos que não e vizinho de um certo ponto
     //Problema de variavel
@@ -201,14 +205,35 @@ vector <string> MenorValor(Grafo _Grafo, string Origem)
         z++;
     }
     //Determina o menor valor entre os pontos não visitados
-    z = 0;
     tam = 0;
-    tam = _Auxiliar.size() / 2;
-    for(int x = 0; x < _Valor.size(); x++)
+    for(int s = 0; s < _Valor.size(); s++)
     {
-        cout << _Valor[x]<< endl;
+        for(int a = 0; a < _Valor.size(); a++)
+        _Auxiliar_1[a] = stoi(_Valor[a]);
+        
+        for(int a = 0; a < _Nos.size(); a++)
+        {
+            z = _Nos[tam].find(Auxiliar);
+            if(z == -1)
+            {
+                tam++;
+                a--;
+            }
+            else
+                a = _Nos.size();
+        }
     }
-
+    for(int x = 0; x < _Valor.size(); x++)
+    {   
+        if(x != _Nos[x].find(Auxiliar))
+        {
+            if(_Auxiliar_1[x] < menor)
+            {
+                menor = _Auxiliar_1[x];
+            }
+        }
+    }
+    cout << z;
     return _Auxiliar;
 }
 //Algoritmo de Dijkstra
