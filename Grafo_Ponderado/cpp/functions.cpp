@@ -225,7 +225,11 @@ vector <string> MenorValor(Grafo _Grafo, string Origem)
     }
     for(int x = 0; x < _Valor.size(); x++)
     {   
-        if(x != _Nos[x].find(Auxiliar))
+        if(_Auxiliar_1[x] == 0)
+        {
+            break;
+        }
+        else
         {
             if(_Auxiliar_1[x] < menor)
             {
@@ -233,7 +237,7 @@ vector <string> MenorValor(Grafo _Grafo, string Origem)
             }
         }
     }
-    cout << z;
+    cout << menor;
     return _Auxiliar;
 }
 //Algoritmo de Dijkstra
