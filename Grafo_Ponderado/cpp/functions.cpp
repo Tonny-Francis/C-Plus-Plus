@@ -193,7 +193,6 @@ vector <string> MenorValor(Grafo _Grafo, string Origem)
     }
     tam = 1;
     //Procura os pontos que não e vizinho de um certo ponto
-    //Problema de variavel
     for(int s = 0; s < _Vizinhos.size() / 2; s++)
     {
         if(_Vizinhos[tam] != _Nos[z])
@@ -225,16 +224,12 @@ vector <string> MenorValor(Grafo _Grafo, string Origem)
     }
     for(int x = 0; x < _Valor.size(); x++)
     {   
-        if(_Auxiliar_1[x] == 0)
-        {
-            break;
-        }
-        else
+        if(_Auxiliar_1[x] != 0)
         {
             if(_Auxiliar_1[x] < menor)
             {
                 menor = _Auxiliar_1[x];
-            }
+            }  
         }
     }
     cout << menor;
